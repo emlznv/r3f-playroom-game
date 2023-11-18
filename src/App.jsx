@@ -40,23 +40,23 @@ export const App = () => {
 
   return (
     <Canvas camera={{ position: [10, 10, 10], fov: 70 }}>
-        <color attach="background" args={['lightblue']} />
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[-10, 10, 0]} intensity={0.4} />
-        <Suspense>
-          <Physics>
-            <Plane position={[0, 0, 0]} color="#9FBB73" />
-            {blocks.map((block, index) => {
-              const isNewestBlock = index === 0
-              const shouldDisplayBlock = !isNewestBlock || !isDroppingBlock
-              return shouldDisplayBlock && (<BoxComponent key={index} {...block} />)}
-            )}
-          </Physics>
-        </Suspense>
-        <OrbitControls />
-        <Html class="main">
-          <button disabled={isDroppingBlock} onClick={handleDropBlock} className="content">DROP</button>
-        </Html>  
+      <color attach="background" args={['lightblue']} />
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[-10, 10, 0]} intensity={0.4} />
+      <Suspense>
+        <Physics>
+          <Plane position={[0, 0, 0]} color="#9FBB73" />
+          {blocks.map((block, index) => {
+            const isNewestBlock = index === 0
+            const shouldDisplayBlock = !isNewestBlock || !isDroppingBlock
+            return shouldDisplayBlock && (<BoxComponent key={index} {...block} />)}
+          )}
+        </Physics>
+      </Suspense>
+      <OrbitControls />
+      <Html class="main">
+        <button disabled={isDroppingBlock} onClick={handleDropBlock} className="content">DROP</button>
+      </Html>  
     </Canvas>
   )
 }
